@@ -1,0 +1,83 @@
+---
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+// Content for the section title and subtitle
+const title = "¿De qué se trata?";
+const subTitle =
+	"INNOVAPAZ es un laboratorio virtual que promueve el emprendimiento social y la innovación con raíces profundas en los saberes ancestrales y el conocimiento académico. A través de procesos colaborativos e intergeneracionales impulsamos iniciativas productivas con impacto social.";
+
+const title2 = "¿Qué nos motiva?";
+const subTitle2 =
+	"Creemos en el poder de la economía solidaria, el liderazgo colectivo y la construcción de paz desde los territorios.  En INNOVAPAZ, cada idea es una semilla para el cambio, y cada emprendimiento una apuesta por una Colombia más justa, inclusiva y sostenible.";
+
+// Call-to-action configuration for the tertiary button
+const tertiaryCTA = { text: "Conozca más", href: "/about/project-overview" };
+---
+
+<section
+	class="mx-auto max-w-[85rem] px-4 pt-4 pb-10 sm:px-6 sm:pt-6 md:pt-8 md:pb-14 lg:px-8 lg:pt-10 lg:pb-16"
+>
+	<div
+		class="relative isolate overflow-hidden rounded-3xl bg-teal-400 px-6 py-12 shadow-xl sm:px-16 lg:px-24"
+	>
+		{/* Background Circle SVG */}
+		<svg
+			viewBox="0 0 1024 1024"
+			class="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+			aria-hidden="true"
+		>
+			<circle
+				cx="512"
+				cy="512"
+				r="512"
+				fill="url(#gradient_2)"
+				fill-opacity="0.7"></circle>
+			<defs>
+				<radialGradient id="gradient_2">
+					<stop offset="0" stop-color="#087F7F"></stop>
+					<stop offset="1" stop-color="#087F7F"></stop>
+				</radialGradient>
+			</defs>
+		</svg>
+
+		<div class="flex flex-col space-y-10">
+			{/* Two column layout for titles and subtitles */}
+			<div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+				{/* First column */}
+				<div class="text-left">
+					<h2
+						class="text-2xl font-semibold tracking-tight text-balance text-slate-800 md:text-3xl md:leading-tight"
+					>
+						{title}
+					</h2>
+					<p class="mt-6 text-lg/8 text-pretty text-slate-700">
+						{subTitle}
+					</p>
+				</div>
+
+				{/* Second column */}
+				<div class="text-left">
+					<h2
+						class="text-2xl font-semibold tracking-tight text-balance text-slate-800 md:text-3xl md:leading-tight"
+					>
+						{title2}
+					</h2>
+					<p class="mt-6 text-lg/8 text-pretty text-slate-700">
+						{subTitle2}
+					</p>
+				</div>
+			</div>
+
+			{/* CTA button (right aligned) */}
+			<div class="flex w-full justify-end">
+				<Button
+					href={tertiaryCTA.href}
+					variant="tertiary"
+					className="group inline-flex items-center justify-center gap-x-2 py-2.5! pr-4 pl-5 text-slate-700"
+					>{tertiaryCTA.text}<Icon name="chevronRight" /></Button
+				>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,225 @@
+---
+import BaseLayout from "@layout/BaseLayout.astro";
+
+const seo = {
+	title: "Noticias y Eventos | Innovapaz",
+	description: "Ultimas noticias y eventos del proyecto Innovapaz.",
+};
+
+// News and events data - add new entries in chronological order
+const newsEvents = [
+	{
+		id: "interges-congreso-2025",
+		title: "Sesión temática - 7o Congreso Global en Contabilidad y Finanzas",
+		date: new Date("2025-09-09"),
+		dateDisplay: "9-11 Septiembre 2025",
+		location: "Bogotá, Colombia",
+		type: "evento",
+		description: "El congreso tiene como objetivo consolidar un espacio de discusión y reflexión en temas relacionados con las ciencias contable, financiera y de gestión, fomentando la participación de investigadores nacionales e internacionales, promoviendo la conformación y fortalecimiento de redes de investigación.",
+		content: "El equipo Innovapaz esta organizando la mesa “Tema especial 2025: Organizaciones sostenibles y saberes ancestrales”.",
+		links: [
+			{
+				text: "Sitio web de la conferencia",
+				url: "https://fce.unal.edu.co/congresocf/inicio"
+			},
+			{
+				text: "Registro",
+				url: "https://fce.unal.edu.co/congresocf/inscripcion/participantes-sin-ponencia"
+			},
+			{
+				text: "Congresos anteriores",
+				url: "https://fce.unal.edu.co/congresocf/congresos-anteriores/"
+			}
+		]
+	},
+	{
+		id: "enig-congreso-2025",
+		title: "Ponencia internacional - 25th International Conference on Diversity in Organizations, Communities & Nations",
+		date: new Date("2025-06-11"),
+		dateDisplay: "11-13 Junio 2025",
+		location: "Nicosia, Chipre",
+		type: "evento",
+		description: "La doctora Mayda Alejandra Calderón Diaz, investigadora principal del proyecto, presentó la ponencia titulada “El laboratorio de co-creación económica e innovación para la paz (INNOVAPAZ): Estudio de caso sobre liderazgo intercultural en Colombia” en la sesión “Conflicto y Paz”.",
+		content: "",
+		links: [
+			{
+				text: "Sitio web de la conferencia",
+				url: "https://ondiversity.com/about/history/2025-conference"
+			},
+		]
+	},
+	{
+		id: "enig-congreso-2025",
+		title: "Ponencia internacional - 7th Edition of Entrepreneurship, Innovation and Governance Conference",
+		date: new Date("2025-04-10"),
+		dateDisplay: "10 Abril 2025",
+		location: "Paris, Francia",
+		type: "evento",
+		description: "La doctora Mayda Alejandra Calderón Diaz, investigadora principal del proyecto, presentó la ponencia titulada “Social innovation and entrepreneurship: the case of the innovapaz laboratory for economic co-creation and innovation for peace in Colombia” en la sesión “Emprendimiento Sostenible e Inclusivo”. La sesión contó con la participación de otros académicos provenientes de Canada, Portugal y Francia.",
+		content: "",
+		links: [
+			{
+				text: "Sitio web de la conferencia",
+				url: "https://enig2025.sciencesconf.org/?lang=en"
+			},
+		]
+	},
+	{
+		id: "fce-entrevista-2024",
+		title: "Entrevista - INNOVAPAZ: un laboratorio de saberes ancestrales y ciencias económicas",
+		date: new Date("2024-10-25"),
+		dateDisplay: "25 Octubre 2024",
+		location: "Bogotá, Colombia",
+		type: "entrevista",
+		description: "En esta entrevista con la Facultad de Ciencias Económicas de la Universidad Nacional de Colombia, la doctora Calderón explica cómo nace este laboratorio, a quiénes va dirigido y el rol de las mujeres en las ciencias económicas.",
+		content: "Debemos ofrecer más oportunidades a las nuevas generaciones de niñas y mujeres para que contribuyan como científicas e investigadoras en la transformación social, y en las ciencias económicas encontramos un campo muy amplio para trabajar, es cuestión de empezar a desarrollar esas habilidades desde la primera infancia, a través de una educación no sexista que contribuya a su inclusión.",
+		links: [
+			{
+				text: "Enlace a la entrevista",
+				url: "https://fce.unal.edu.co/facultad/noticias/noticia-33"
+			},
+			{
+				text: "Grabación (YouTube)",
+				url: "https://youtu.be/oV8M9SVKRxE"
+			},
+		]
+	}
+];
+
+const now = new Date();
+const upcomingEvents = newsEvents.filter(event => event.date >= now).sort((a, b) => a.date.getTime() - b.date.getTime());
+const pastEvents = newsEvents.filter(event => event.date < now).sort((a, b) => b.date.getTime() - a.date.getTime());
+---
+
+<BaseLayout seo={seo}>
+	<section class="py-16 lg:py-20">
+		<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h1 class="mb-4 text-4xl font-bold lg:text-5xl">Noticias & Eventos</h1>
+				<p class="text-foreground/80 text-lg">
+					Ultimas noticias y eventos del proyecto Innovapaz
+				</p>
+			</div>
+
+			<!-- Upcoming Events -->
+			{upcomingEvents.length > 0 && (
+				<div class="mb-16">
+					<h2 class="text-3xl font-bold mb-8 text-emerald-700">Eventos próximos</h2>
+					<div class="space-y-12">
+						{upcomingEvents.map((item) => (
+							<article class="relative">
+								<div class="flex flex-col lg:flex-row lg:gap-12">
+									<div class="lg:w-48 lg:flex-shrink-0 mb-6 lg:mb-0">
+										<div class="text-3xl font-bold text-emerald-600 mb-1">{item.dateDisplay.split(' ')[0]}</div>
+										<div class="text-lg text-gray-600 mb-2">{item.dateDisplay.split(' ').slice(1).join(' ')}</div>
+										{item.location && (
+											<div class="text-sm text-gray-500 flex items-center">
+												<svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+													<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+												</svg>
+												{item.location}
+											</div>
+										)}
+									</div>
+									
+									<div class="flex-1">
+										<div class="flex items-center gap-3 mb-4">
+											<h3 class="text-2xl font-bold">{item.title}</h3>
+											<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-700">
+												{item.type}
+											</span>
+										</div>
+										
+										<p class="text-gray-700 mb-4 leading-relaxed">{item.description}</p>
+										<p class="text-gray-600 mb-6 leading-relaxed">{item.content}</p>
+
+										{item.links && item.links.length > 0 && (
+											<div class="flex flex-wrap gap-3">
+												{item.links.map((link) => (
+													<a 
+														href={link.url} 
+														target="_blank" 
+														rel="noopener noreferrer"
+														class="inline-flex items-center px-4 py-2 rounded-lg hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 font-medium"
+														style="background-color: #0f766e; color: white; text-decoration: none;"
+													>
+														{link.text}
+														<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+														</svg>
+													</a>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Past Events -->
+			{pastEvents.length > 0 && (
+				<div>
+					<h2 class="text-3xl font-bold mb-8 text-gray-600">Eventos pasados</h2>
+					<div class="space-y-8">
+						{pastEvents.map((item) => (
+							<article class="relative opacity-75">
+								<div class="flex flex-col lg:flex-row lg:gap-12">
+									<div class="lg:w-48 lg:flex-shrink-0 mb-4 lg:mb-0">
+										<div class="text-2xl font-bold text-gray-500 mb-1">{item.dateDisplay.split(' ')[0]}</div>
+										<div class="text-base text-gray-400 mb-2">{item.dateDisplay.split(' ').slice(1).join(' ')}</div>
+										{item.location && (
+											<div class="text-sm text-gray-400 flex items-center">
+												<svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+													<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+												</svg>
+												{item.location}
+											</div>
+										)}
+									</div>
+									
+									<div class="flex-1">
+										<div class="flex items-center gap-3 mb-3">
+											<h3 class="text-xl font-bold text-gray-600">{item.title}</h3>
+											<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-teal-50 text-teal-500">
+												{item.type}
+											</span>
+										</div>
+										
+										<p class="text-gray-500 mb-3 leading-relaxed text-sm">{item.description}</p>
+
+										{item.links && item.links.length > 0 && (
+											<div class="flex flex-wrap gap-2">
+												{item.links.map((link) => (
+													<a 
+														href={link.url} 
+														target="_blank" 
+														rel="noopener noreferrer"
+														class="inline-flex items-center px-3 py-1 text-sm border border-gray-400 text-gray-500 rounded hover:bg-gray-50 hover:text-gray-700 transition-colors duration-200"
+													>
+														{link.text}
+														<svg class="ml-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+														</svg>
+													</a>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			)}
+
+			{newsEvents.length === 0 && (
+				<div class="text-center py-12">
+					<p class="text-gray-500 text-lg">No events posted yet. Check back soon!</p>
+				</div>
+			)}
+		</div>
+	</section>
+</BaseLayout>

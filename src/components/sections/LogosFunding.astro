@@ -1,0 +1,40 @@
+---
+import unalLogo from "../../assets/images/unal-logo.png";
+import intergesLogo from "../../assets/images/interges-logo.png";
+import orquideasLogo from "../../assets/images/orquideas-logo.png";
+
+const title = "Organizaciones Ejecutoras y Financiamiento";
+const subTitle =
+	"El laboratorio de co-creación económica e innovación para la paz (INNOVAPAZ) es financiado por la 948-2024 Convocatoria Programa Orquídeas - Mujeres en la Ciencia del Ministerio de Ciencia Tecnología e Innovación MinCiencias de la República de Colombia.";
+---
+
+<!-- Organisation and Partner Logos Section -->
+<section
+	class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 md:py-14 lg:px-8 lg:py-20"
+>
+	<div class="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
+		<h2 class="text-4xl text-balance text-slate-800 sm:text-5xl">
+			<Fragment set:html={title} />
+		</h2>
+		<p class="text-lg\/8 mt-5 pb-8 text-pretty text-slate-600">
+			{subTitle}
+		</p>
+		<div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+			<img
+				src={unalLogo.src}
+				alt="Logo Universidad Nacional de Colombia"
+				class="h-16 object-contain"
+			/>
+			<img
+				src={intergesLogo.src}
+				alt="Logo Interges"
+				class="h-16 object-contain"
+			/>
+			<img
+				src={orquideasLogo.src}
+				alt="Logo Orquideas Minciencias"
+				class="h-16 object-contain"
+			/>
+		</div>
+	</div>
+</section>

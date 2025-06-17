@@ -1,0 +1,98 @@
+---
+import Icon from "@ui/icons/Icon.astro";
+
+const title =
+	'¿Cuáles son los objetivos <span class="text-teal-700">Innova</span><span class="font-normal text-slate-400">paz</span>?';
+const subTitle =
+	"INNOVAPAZ contribuye a la economia colombiana mediante el fortalecimiento del ecosistema de emprendimiento social. Nuestro objectivo principal es difundir los conocimientos ancestrales a través de la creación de empresas formales en mujeres, personas víctimas del conflicto, población LGTBIQ+, población étnica, reinsertados y personas con discapacidad.";
+
+const goals = [
+	{
+		borderClasses: "md:border-l",
+		gradientClasses: "bg-linear-to-l/oklch from-teal-200 to-transparent",
+		icon: "mdi:graph-timeline-variant",
+		heading: "Establecimiento de un espacio físico y virtual de co-creación económica",
+		description:
+			"Instaurar el laboratorio “INNOVAPAZ” como un espacio físico y virtual dedicado a la co-creación económica, que promueva la integración de saberes ancestrales y científicos para la creación de la paz en Colombia.",
+	},
+	{
+		borderClasses: "border-t",
+		gridClasses: "md:col-start-2 md:col-end-3",
+		gradientClasses: "bg-linear-to-t/oklch from-teal-200 to-transparent",
+		icon: "mdi:chart-line",
+		heading: "Fortalecimiento de conocimientos ancestrales y habilidades empresariales",
+		description:
+			"Diseñar e implementar programas de formación especializados en emprendimiento y gestión empresarial, dirigidos a mujeres, personas víctimas del conflicto, población LGTBIQ+, población étnica, reinsertados y personas con discapacidad, con el objetivo de difundir y fortalecer sus conocimientos ancestrales y habilidades empresariales.",
+	},
+	{
+		borderClasses: "md:border-l border-t",
+		gridClasses: "md:col-end-4",
+		gradientClasses: "bg-linear-to-tl/oklch from-teal-200 to-transparent",
+		icon: "mdi:account-heart",
+		heading: "Fomentación de la colaboración y la construcción de redes de apoyo",
+		description:
+			"Facilitar espacios de encuentro y diálogo intergeneracional que promuevan el intercambio de saberes y experiencias entre diferentes grupos poblacionales, fomentando la colaboración y la construcción de redes de apoyo para el desarrollo de emprendimientos.",
+	},
+	{
+		borderClasses: "md:border-r border-t",
+		gridClasses: "md:col-span-1 md:col-start-1 md:col-end-2 md:row-start-3",
+		gradientClasses: "bg-linear-to-tr/oklch from-teal-200 to-transparent",
+		icon: "mdi:tools",
+		heading: "Asesoria y acompañamiento técnico para la formalización de emprendimientos",
+		description:
+			"Brindar asesoría y acompañamiento técnico a los emprendedores en el proceso de creación y consolidación de empresas formales, con énfasis en la integración de prácticas sostenibles con el medio ambiente y las comunidades locales.",
+	},
+];
+---
+
+<section
+	class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 md:py-14 lg:px-8 lg:py-20"
+>
+	<div
+		class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 md:grid-rows-3"
+	>
+		{/* Section container for the title and subtitle */}
+		<div
+			class="mx-auto max-w-lg pb-5 text-center md:col-span-2 lg:mx-0 lg:flex-auto lg:text-left"
+		>
+			<h2
+				class="text-2xl font-semibold tracking-tight text-balance text-slate-800 md:text-3xl md:leading-tight"
+			>
+				<Fragment set:html={title} />
+			</h2>
+			<p
+				class="mt-6 text-start text-lg/8 text-pretty text-slate-700 sm:text-center md:text-start"
+			>
+				{subTitle}
+			</p>
+		</div>
+
+		{/* Feature Cards */}
+		{
+			goals &&
+				goals.map((goal) => (
+					<div
+						class={`group relative mx-auto flex flex-col border-dashed border-slate-400 py-10 ${goal.borderClasses} ${goal.gridClasses}`}
+					>
+						<div
+							class={`group pointer-events-none absolute inset-0 h-full w-full ${goal.gradientClasses} opacity-0 transition duration-300 group-hover:opacity-100`}
+						/>
+						<div class="relative z-10 mb-4 px-10">
+							<Icon
+								name={goal.icon}
+								class="size-6 text-slate-600"
+							/>
+						</div>
+						<div class="relative z-10 mb-2 px-10 text-lg font-semibold">
+							<span class="inline-block text-balance text-slate-800 transition duration-300 group-hover:translate-x-2">
+								{goal.heading}
+							</span>
+						</div>
+						<p class="z-10 max-w-sm px-4 text-sm text-pretty text-slate-700 sm:max-w-lg md:mx-auto">
+							{goal.description}
+						</p>
+					</div>
+				))
+		}
+	</div>
+</section>

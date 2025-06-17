@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+
+// Datos de los talleres 
+const resources = [
+	{
+		title: "Contabilidad de Gestión",
+		slug: "contabilidad-de-gestion",
+		description:
+			"Aprende a manejar costos, gastos y elaborar estados de resultados para productos y servicios.",
+		image: "/images/contabilidad-gestion.jpg",
+	},
+	{
+		title: "Finanzas Básicas para Emprendedores",
+		slug: "finanzas-basicas-para-emprendedores",
+		description:
+			"Entiende tus números, mejora tus decisiones financieras y gestiona mejor tu negocio.",
+		image: "/images/finanzas-basicas.jpg",
+	},
+	{
+		title: "Formalización de Emprendimientos",
+		slug: "formalizacion-de-emprendimientos",
+		description:
+			"Conoce los pasos clave para legalizar tu negocio y acceder a más oportunidades.",
+		image: "/images/formalizacion-empredimientos.jpg",
+	},
+	{
+		title: "Financiación para Emprendimientos con Propósito",
+		slug: "financiacion-para-emprendimientos-con-proposito",
+		description:
+			"Descubre dónde buscar recursos, cómo prepararte para obtener financiación y cómo presentar tu propuesta con éxito (Pitch + propuesta).",
+		image: "/images/financiacion-proposito.jpg",
+	},
+];
+
+const seo = {
+	title: "Talleres | Innovapaz",
+	description:
+		"Talleres desarrollados por el proyecto Innovapaz.",
+};
+---
+
+<BaseLayout seo={seo}>
+	<div class="container mx-auto max-w-6xl px-4 py-12">
+		<div class="mx-auto mb-12 max-w-4xl text-center">
+			<h1 class="mb-4 text-4xl font-bold text-slate-800 lg:text-5xl">
+				Talleres
+			</h1>
+			<p class="mx-auto mb-8 max-w-3xl text-lg text-slate-600">
+				Unéte a Innovapaz. ¡Fortalece tu emprendimiento con conocimiento práctico y transformador! Desde Innovapaz te invitamos a participar en nuestros talleres totalmente gratuitos, diseñados para emprendedoras y emprendedores que quieren hacer crecer sus ideas con impacto.
+			</p>
+		</div>
+
+		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+			{
+				resources.map((resource) => (
+					<div class="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md">
+						<div class="flex flex-1 flex-col p-6">
+
+							<h2 class="mb-2 text-2xl font-semibold text-slate-800">
+								{resource.title}
+							</h2>
+							<p class="mb-4 flex-1 text-slate-600">
+								{resource.description}
+							</p>
+
+							<a
+								href={`${import.meta.env.BASE_URL}/resources/${resource.slug}`}
+								class="inline-flex items-center justify-center rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-teal-700 focus:ring-2 focus:ring-teal-500/40 focus:outline-none"
+							>
+								Mayor información
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+
+		<div class="container mx-auto max-w-6xl px-4 py-12">
+			<div class="mx-auto mb-12 max-w-4xl text-left">
+			<p class="mb-4 text-lg leading-relaxed text-slate-600">
+				Además, ofrecemos asesorías gratuitas y personalizadas en cualquiera de estos temas para acompañarte paso a paso en tu camino emprendedor.
+				Todos los talleres y asesorías son 100% gratuitos y virtuales. ¡Inscríbete y construye un emprendimiento más sólido, sostenible y con propósito!
+			</p>
+			<p class="mb-4 text-lg leading-relaxed text-slate-600">
+				La guía es totalmente práctica y adaptada a emprendedores. 
+				Para poder iniciar su camino, no es necesario tener una formación técnica en finanzas. 
+				Para asegurar su éxito a largo plazo, los participantes aprenderán a tomar el control financiero de su emprendimiento mediante herramientas accesibles, junto con ejemplos concretos, lo cual es esencial.
+			</p>
+			<h2 class="mb-4 text-2xl font-semibold text-slate-700">
+				¿Tienes una idea de negocio y no sabes por dónde empezar? ¡Búscanos!
+			</h2>
+			<p class="mb-4 text-lg leading-relaxed text-slate-600">
+				En Innovapaz te acompañamos a convertir tu idea en un emprendimiento con impacto. Participa en nuestros cursos totalmente gratuitos, diseñados para ayudarte a crecer con herramientas claras y acompañamiento real.
+			</p>
+			<h2 class="mb-4 text-2xl font-semibold text-slate-700">
+				¿Necesitas financiamiento para tu negocio? 
+			</h2>
+			<p class="mb-4 text-lg leading-relaxed text-slate-600">
+			¡Búscanos! Te informamos cómo prepararte, dónde buscar y cómo lograr que tu emprendimiento sea financiado.			</p>
+		</div>
+	</div>
+</BaseLayout>

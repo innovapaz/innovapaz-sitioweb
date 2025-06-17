@@ -1,0 +1,185 @@
+---
+import Navbar from "@sections/Navbar.astro";
+import Footer from "@sections/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { SEO, type Props as SEOProps } from "astro-seo";
+import { Schema } from "astro-seo-schema";
+import type { WithContext, Thing } from "schema-dts";
+import { AstroFont } from "astro-font";
+import "@styles/global.css";
+import { getAssetPath } from "@utils/utils";
+
+interface Props {
+	seo?: SEOProps; // Optional SEO properties to customize meta tags
+	schema?: WithContext<Thing>; // Optional schema.org properties for structured data
+	isHomepage?: boolean; // Flag to indicate if current page is homepage
+}
+
+// Extract `seo`, `schema`, and `isHomepage` from properties or define defaults
+const { seo, schema, isHomepage = false } = Astro.props;
+const socialImage = `${Astro.site}social.png`; // Path to the default social sharing image
+
+// Define default JSON-LD Schema.org data if no schema is passed
+const defaultSchema: WithContext<Thing> = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+  	inLanguage: "es-co",
+	"@id": Astro.url.href,
+	url: Astro.url.href,
+  	name: "Innovapaz",
+	description:
+    	"Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio.",
+	isPartOf: {
+		"@type": "WebSite",
+		url: `${Astro.site}`,
+    	name: "innovapaz-website",
+		description:
+      		"Sitio oficial del proyecto Innovapaz con fondos de Minciencias.",
+	},
+};
+---
+
+<html lang="sp" class="scroll-pt-32">
+	<head>
+		{/* SEO Meta Tags */}
+		<SEO
+			charset="utf-8"
+			title={seo?.title ??
+				"Innovapaz: Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio"}
+			description={seo?.description ??
+				"Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio."}
+			openGraph={{
+				basic: {
+					title:
+						seo?.openGraph?.basic?.title ??
+						"Innovapaz - Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio",
+					type: "website",
+					image: seo?.openGraph?.basic?.image ?? socialImage,
+				},
+				optional: {
+					description:
+						seo?.openGraph?.optional?.description ??
+						"Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio.",
+				},
+			}}
+			twitter={{
+				card: "summary_large_image",
+				title:
+					seo?.twitter?.title ??
+					"Innovapaz - Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio",
+				description:
+					seo?.twitter?.description ??
+					"Donde las ideas se convierten en acción, y los emprendimientos en motores de cambio.",
+				image: seo?.twitter?.image ?? socialImage,
+				imageAlt: seo?.twitter?.imageAlt ?? "Innovapaz Logo Placeholder",
+			}}
+			extend={{
+				link: [
+					// { rel: "icon", href: `${import.meta.env.BASE_URL}/icon.svg`, type: "image/svg+xml" },
+					{
+						rel: "apple-touch-icon",
+						href: getAssetPath("/apple-touch-icon.png"),
+					},
+					{
+						rel: "manifest",
+						href: getAssetPath("/manifest.webmanifest"),
+					},
+				],
+				meta: [
+					{ name: "viewport", content: "width=device-width" },
+					{ name: "generator", content: `${Astro.generator}` },
+				],
+			}}
+		/>
+		{/* Schema.org JSON-LD */}
+		<Schema item={schema ?? defaultSchema} />
+
+		{/* Client-Side Router for page transitions */}
+		<ClientRouter />
+
+		{/* Font Definitions */}
+		<AstroFont
+			config={[
+				{
+					src: [],
+					name: "DM Sans",
+					googleFontsURL:
+						"https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap",
+					preload: true,
+					display: "swap",
+					selector: "h1, h2, h3, h4",
+					fallback: "sans-serif",
+				},
+				{
+					src: [],
+					name: "Work Sans",
+					googleFontsURL:
+						"https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap",
+					preload: true,
+					display: "swap",
+					selector: "body",
+					fallback: "sans-serif",
+				},
+			]}
+		/>
+
+		{/* Remove duplicate font links during transitions */}
+		<script>
+			import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
+			document.addEventListener("astro:before-swap", (e) =>
+				[
+					...(
+						e as TransitionBeforeSwapEvent
+					).newDocument.head.querySelectorAll('link[as="font"]'),
+				].forEach((link) => link.remove())
+			);
+		</script>
+
+		<!-- Preline UI JavaScript -->
+		<script>
+			import "preline/dist/preline.js";
+			document.addEventListener("astro:page-load", () => {
+				// @ts-ignore
+				window.HSStaticMethods.autoInit();
+
+				// Custom hover functionality for mega menu dropdowns
+				document
+					.querySelectorAll(".hs-dropdown")
+					.forEach((dropdown) => {
+						if (window.innerWidth >= 1280) {
+							// xl breakpoint
+							const button = dropdown.querySelector(
+								".hs-dropdown-toggle"
+							);
+							const menu =
+								dropdown.querySelector(".hs-dropdown-menu");
+
+							// Only add hover functionality to desktop view
+							dropdown.addEventListener("mouseenter", () => {
+								button?.setAttribute("aria-expanded", "true");
+								menu?.classList.remove("hidden");
+								menu?.classList.add("opacity-100");
+							});
+
+							dropdown.addEventListener("mouseleave", () => {
+								button?.setAttribute("aria-expanded", "false");
+								menu?.classList.add("hidden");
+								menu?.classList.remove("opacity-100");
+							});
+						}
+					});
+			});
+		</script>
+	</head>
+	<body
+		class="bg-off-white flex min-h-screen flex-col selection:bg-teal-400 selection:text-slate-700"
+	>
+		<Navbar />
+
+		<main class={`flex-grow ${isHomepage ? "" : "pt-32"}`}>
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>

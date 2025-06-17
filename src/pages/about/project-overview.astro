@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+
+import unalLogo from "../../assets/images/unal-logo.png";
+import intergesLogo from "../../assets/images/interges-logo.png";
+import orquideasLogo from "../../assets/images/orquideas-logo.png";
+
+const title = "Organizaciones Ejecutoras y Financiamiento";
+const subTitle =
+	"El laboratorio de co-creación económica e innovación para la paz (INNOVAPAZ) es financiado por la 948-2024 Convocatoria Programa Orquídeas - Mujeres en la Ciencia del Ministerio de Ciencia Tecnología e Innovación MinCiencias de la República de Colombia.";
+
+const quienesContent = `Innovapaz es un programa de fortalecimiento económico y social que impulsa el emprendimiento con propósito en comunidades con alto potencial de transformación. Nacemos con la convicción de que el conocimiento, el acompañamiento y las oportunidades deben estar al alcance de todos, sin barreras económicas ni educativas. A través de formación práctica, asesoría personalizada y herramientas clave, apoyamos a personas que quieren poner en marcha o fortalecer sus ideas de negocio, especialmente aquellas con impacto social, ambiental o comunitario.`;
+
+const enfoqueContent = ``;
+
+const audienciaContent = `A personas con ideas de negocio, emprendimientos en marcha o sueños por construir. Si tienes una idea y no sabes por dónde empezar, o si necesitas financiación y no sabes cómo prepararte, estamos para ayudarte.<br/><br/>Buscamos <em>mujeres, personas de comunidades étnicas, personas en situación de vulnerabilidad, reinsertados (firmantes de la paz), población LGBTIQ+ y personas con discapacidad</em> que quieran emprender o que ya sean emprendedores.`;
+
+const enfoqueList = [
+	"<strong>Cursos gratituos:</strong> en áreas esenciales como contabilidad, finanzas, formalización y acceso a financiación.",
+	"<strong>Asesorías sin costo:</strong> ajustadas a las necesidades de cada emprendedor.",
+	"<strong>Orientación personalizada:</strong> para estructurar propuestas, mejorar ideas de negocio y presentarlas ante financiadores.",
+];
+---
+
+<BaseLayout
+	seo={{
+		title: "Resumen del proyecto - Innovapaz",
+		description:
+			"Entienda las metas y audiencia de Innovapaz.",
+	}}
+>
+	<div class="container mx-auto max-w-4xl px-4 py-12">
+		<h1 class="mb-8 text-center text-4xl font-bold text-slate-800">
+			Resumen del proyecto
+		</h1>
+
+		<section class="mb-12">
+			<h2 class="mb-4 text-3xl font-semibold text-slate-700">
+				¿Quiénes somos?
+			</h2>
+			<p
+				class="text-lg leading-relaxed text-slate-600"
+				set:html={quienesContent}
+			/>
+		</section>
+
+		<section class="mb-12">
+			<h2 class="mb-4 text-3xl font-semibold text-slate-700">
+				¿Qué ofrecemos?
+			</h2>
+			<p
+				class="mb-4 text-lg leading-relaxed text-slate-600"
+				set:html={enfoqueContent}
+			/>
+			<ul class="list-inside list-disc space-y-2 text-lg text-slate-600">
+				{enfoqueList.map((item) => <li set:html={item} />)}
+			</ul>
+		</section>
+
+		<section class="mb-12">
+			<h2 class="mb-4 text-3xl font-semibold text-slate-700">
+				¿A quiénes acompañamos?
+			</h2>
+			<p
+				class="text-lg leading-relaxed text-slate-600"
+				set:html={audienciaContent}
+			/>
+		</section>
+
+		<section class="mb-4">
+			<h2 class="mb-4 text-3xl font-semibold text-slate-700">
+				{title}
+			</h2>
+			<p class="mb-12 text-lg leading-relaxed text-slate-600">
+				{subTitle}
+			</p>
+			<div
+				class="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+			>
+			<img
+				src={unalLogo.src}
+				alt="Logo Universidad Nacional de Colombia"
+				class="h-16 object-contain"
+			/>
+			<img
+				src={intergesLogo.src}
+				alt="Logo Interges"
+				class="h-16 object-contain"
+			/>
+			<img
+				src={orquideasLogo.src}
+				alt="Logo Orquideas Minciencias"
+				class="h-16 object-contain"
+			/>
+			</div>
+		</section>
+	</div>
+</BaseLayout>

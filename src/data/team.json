@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Mayda Alejandra Calderón Diaz",
+    "affiliation": "Universidad Nacional de Colombia",
+    "position": "Investigadora Postdoctoral del Programa Orquídeas - Minciencias",
+    "role": "Investigadora Principal",
+    "profileURL": "https://www.linkedin.com/in/mayda-alejandra-calderon-phd-2ba19b163/",
+    "photoUrl": "/images/team/mayda-calderon.jpeg",
+    "section": "Equipo de Investigación"
+  },
+  {
+    "name": "Sofía Ortiz Tinoco",
+    "affiliation": "Universidad Nacional de Colombia",
+    "position": "Candidata Magister en Administración",
+    "role": "Joven Investigadora",
+    "profileURL": "https://www.linkedin.com/in/sofia-ortiz-tinoco",
+    "photoUrl": "/images/team/sofia-ortiz.png",
+    "section": "Equipo de Investigación"
+  },
+  {
+    "name": "Zuray Andrea Melgarejo Molina",
+    "affiliation": "Universidad Nacional de Colombia",
+    "position": "Profesora asociada de la Facultad de Ciencias Económicas",
+    "role": "Supervisora - Experta",
+    "profileURL": "https://fce.unal.edu.co/formacion/eacp/profesores/zamelgarejomo",
+    "photoUrl": "/images/team/zuray-melgarejo.png",
+    "section": "Equipo de Investigación"
+  }
+]

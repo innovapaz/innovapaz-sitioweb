@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import Icon from "../../components/ui/icons/Icon.astro";
+import { getAssetPath } from "../../utils/utils";
+// import { Image } from "astro:assets"; // Only needed if images are in src/assets and need optimization
+
+const pageTitle = "Contáctenos | Innovapaz";
+const pageDescription =
+	"Si tiene comentarios, dudas, sugerencias o solo quieres ponerte en contacto con el equipo de Innovapaz, por favor envie un correo a los contactos en la parte inferior.";
+
+// Social links definition (kept for when they are ready)
+// Commented out to avoid TypeScript warning as these aren't used yet
+/* 
+const socialLinks = [
+	{ name: "LinkedIn", url: "#", icon: "mdi:linkedin" },
+	{
+		name: "GitHub",
+		url: "https://github.com/innovapaz/innovapaz.github.io",
+		icon: "mdi:github",
+	},
+];
+*/
+
+const keyContacts = [
+	{
+		name: "Mayda Alejandra Calderón Diaz",
+		role: "Consultas del Proyecto",
+		affiliation: "Universidad Nacional de Colombia",
+		email: "info.innovapaz@gmail.com",
+		photoUrl: "/images/team/mayda-calderon.jpeg", // Path to image in /public
+	},
+];
+---
+
+<BaseLayout seo={{ title: pageTitle, description: pageDescription }}>
+	<div class="container mx-auto">
+		<header class="mb-12 text-center">
+			<h1 class="text-4xl font-bold text-slate-800 sm:text-5xl">
+				Contáctenos
+			</h1>
+			<p class="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
+				Si tiene comentarios, dudas, sugerencias o solo quieres ponerte en contacto con el equipo de Innovapaz, por favor envie un correo al contacto en la parte inferior.
+			</p>
+		</header>
+
+		<!-- Key Contacts Section -->
+		<section class="mb-16">
+			<div
+				class="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-1"
+			>
+				{
+					keyContacts.map((contact) => (
+						<div class="flex flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+							<div class="mb-6 flex items-center gap-4">
+								{" "}
+								{/* Increased bottom margin */}
+								<img
+									src={
+										contact.photoUrl
+											? getAssetPath(contact.photoUrl)
+											: getAssetPath(
+													"/images/team/team-placeholder.jpeg"
+												)
+									}
+									alt={`Photo of ${contact.name}`}
+									class="size-30 flex-shrink-0 rounded-full border-2 border-slate-100 object-cover"
+									width="80"
+									height="80"
+									loading="lazy"
+								/>
+								<div class="flex-grow">
+									<h3 class="text-xl font-semibold text-slate-800">
+										{contact.name}
+									</h3>
+									<p class="text-sm text-slate-500">
+										{contact.affiliation}
+									</p>
+									<p class="mt-1 text-sm text-slate-600">
+										{contact.role}
+									</p>
+								</div>
+							</div>
+							<a
+								href={`mailto:${contact.email}`}
+								class="mt-auto inline-flex items-center justify-center gap-2 rounded-md bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-100 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none"
+							>
+								<Icon name="mdi:email-outline" class="size-5" />
+								<span>Enviar correo</span>{" "}
+								{/* Email to First Name */}
+							</a>
+						</div>
+					))
+				}
+			</div>
+		</section>
+	</div>
+</BaseLayout>
