@@ -6,7 +6,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://innovapaz.github.io",
+  site: "https://innovapaz.com",
   base: "./",
   prefetch: true,
   trailingSlash: "never",
