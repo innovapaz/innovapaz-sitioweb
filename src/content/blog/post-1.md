@@ -1,6 +1,6 @@
 ---
 title: "La Dra. Mayda Alejandra Calderón-Díaz presenta INNOVAPAZ en la Conferencia de Emprendimiento, Innovación y Gobernanza en París-Francia"
-description: "Este blog resume la ponencia internacional en el congreso VUCA"
+description: "Este blog resume la ponencia internacional en la conferencia ENIG2025"
 publishDate: 2025-04-11 # Use el formato AAAA-MM-DD
 author: "Mayda Alejandra Calderón Diaz"
 coverImage: "../../assets/images/blog-post1-image1.jpeg"

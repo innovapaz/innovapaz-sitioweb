@@ -1,6 +1,6 @@
 ---
 title: "Participación de la Dra. Mayda Alejandra Calderón-Díaz en el Congreso sobre Liderazgo Intercultural en la Universidad de Nicosia, Chipre"
-description: "Este blog resume la ponencia internacional en la conferencia ENIG2025"
+description: "Este blog resume la ponencia internacional en el congreso VUCA"
 publishDate: 2025-06-14 # Use el formato AAAA-MM-DD
 author: "Mayda Alejandra Calderón Diaz"
 coverImage: "../../assets/images/blog-post2-image1.jpeg"
