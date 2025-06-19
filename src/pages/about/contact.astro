@@ -23,11 +23,7 @@ const socialLinks = [
 
 const keyContacts = [
 	{
-		name: "Mayda Alejandra Calderón Diaz",
-		role: "Consultas del Proyecto",
-		affiliation: "Universidad Nacional de Colombia",
 		email: "info.innovapaz@gmail.com",
-		photoUrl: "/images/team/mayda-calderon.jpeg", // Path to image in /public
 	},
 ];
 ---
@@ -51,35 +47,6 @@ const keyContacts = [
 				{
 					keyContacts.map((contact) => (
 						<div class="flex flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-							<div class="mb-6 flex items-center gap-4">
-								{" "}
-								{/* Increased bottom margin */}
-								<img
-									src={
-										contact.photoUrl
-											? getAssetPath(contact.photoUrl)
-											: getAssetPath(
-													"/images/team/team-placeholder.jpeg"
-												)
-									}
-									alt={`Photo of ${contact.name}`}
-									class="size-30 flex-shrink-0 rounded-full border-2 border-slate-100 object-cover"
-									width="80"
-									height="80"
-									loading="lazy"
-								/>
-								<div class="flex-grow">
-									<h3 class="text-xl font-semibold text-slate-800">
-										{contact.name}
-									</h3>
-									<p class="text-sm text-slate-500">
-										{contact.affiliation}
-									</p>
-									<p class="mt-1 text-sm text-slate-600">
-										{contact.role}
-									</p>
-								</div>
-							</div>
 							<a
 								href={`mailto:${contact.email}`}
 								class="mt-auto inline-flex items-center justify-center gap-2 rounded-md bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-100 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none"
