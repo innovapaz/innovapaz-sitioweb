@@ -171,26 +171,6 @@ const defaultSchema: WithContext<Thing> = {
 			});
 		</script>
 
-		<!-- Google tag (gtag.js) -->
-		<script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-KVSGD02WDB"></script>
-
-		<script is:inline type="text/partytown">
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-
-			// This should ALWAYS be set before the gtag("config", "G-KVSGD02WDB"); line
-			gtag("consent", "default", {
-				ad_storage: "denied",
-				ad_user_data: "denied",
-				ad_personalization: "denied",
-				analytics_storage: "denied",
-			});
-
-			gtag("config", "G-KVSGD02WDB");
-		</script>	
 	</head>
 	<body
 		class="bg-off-white flex min-h-screen flex-col selection:bg-teal-400 selection:text-slate-700"
