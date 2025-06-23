@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import partytown from '@astrojs/partytown';
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
@@ -13,7 +14,7 @@ export default defineConfig({
   experimental: {
     clientPrerender: true,
   },
-  integrations: [react(), markdoc(), icon()],
+  integrations: [partytown({ config: { forward: ['dataLayer.push'] } }), react(), markdoc(), icon()],
   vite: {
     plugins: [tailwindcss()],
   },
